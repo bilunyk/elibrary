@@ -1,0 +1,1 @@
+sqlite3 --init elibrary/populate_db.sql elibrary/library.db

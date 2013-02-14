@@ -1,0 +1,11 @@
+{% import "macro.html" as form_helper %}
+{% extends "layout.html" %}
+{% block content %}
+    <form action="" method="POST">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+        {{ form_helper.input(form.name) }}
+        {{ form_helper.textarea(form.info) }}
+        {{ form_helper.multiple_data(form.books) }}
+        {{ form_helper.submit('Add author') }}
+    </form>
+{% endblock %}

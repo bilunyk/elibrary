@@ -1,0 +1,45 @@
+<html>
+<head>
+    <title>{% block title %} E-Library App {% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/app.css">
+    <script type="text/javascript" src="/static/js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-cookie.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/static/js/handlebars.js"></script>
+    <script type="text/javascript" src="/static/js/app.js"></script>
+    {% raw %}
+    <script id="search-item-template" type="text/x-handlebars-template">
+        <div class="well search-item">
+            <img src="/static/img/python_logo.png">
+            <p><b>Book Title:</b> {{title}}</p>
+            <p><b>Authors:</b> {{authors}}</p>
+        </div>
+    </script>
+    {% endraw %}
+</head>
+<body>
+<div class="container">
+{% block nav %}
+<div class="navbar">
+  <div class="navbar-inner">
+    <ul class="nav">
+      <li {% if request.endpoint == "index" %}class="active"{% endif %}><a href="{{ url_for('index') }}">Home</a></li>
+      {% if not current_user.is_authenticated() %}
+        <li {% if request.endpoint == "login" %}class="active"{% endif %}><a href="{{ url_for('login') }}">Sign in</a></li>
+        <li {% if request.endpoint == "register" %}class="active"{% endif %}><a href="{{ url_for('register') }}">Register</a></li>
+      {% else %}
+        <li {% if request.endpoint == "book_list" or request.endpoint == "book_add" or request.endpoint == "book_edit" %}class="active"{% endif %}><a href="{{ url_for('book_list') }}">Books</a></li>
+        <li {% if request.endpoint == "author_list" or request.endpoint == "author_add" or request.endpoint == "author_edit" %}class="active"{% endif %}><a href="{{ url_for('author_list') }}">Authors</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+      {% endif %}
+    </ul>
+  </div>
+</div>
+{% endblock %}
+{% block content %}
+    
+{% endblock %}
+</div>
+</body>
+</html>

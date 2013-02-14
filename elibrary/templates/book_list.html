@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="span4 offset2">
+        <a href="{{ url_for('book_add') }}">Add book</a>
+        {% for book in objects %}
+            <div class="object-item">
+                <img src="/static/img/python_logo.png">
+                <p><a href="{{ url_for('book_edit', obj_id=book.id) }}">{{ book.title }}</a></p>
+                <p>{{ book.info }}</p>
+                {% if book.authors %}
+                    <p><b>Authors:</b>
+                    {% for author in book.authors %}
+                        <span class="label label-info">{{ author }}</span>
+                    {% endfor %}</p>    
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

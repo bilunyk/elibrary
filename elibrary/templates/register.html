@@ -1,0 +1,13 @@
+{% import "macro.html" as form_helper %}
+{% extends "layout.html" %}
+{% block title %}Registration{% endblock %}
+{% block content %}
+<form class="form-horizontal" method="POST">
+  <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+  {{ form_helper.input(form.username) }}
+  {{ form_helper.input(form.password) }}
+  {{ form_helper.input(form.confirm) }}
+  {{ form_helper.input(form.email) }}
+  {{ form_helper.submit('Register') }}
+</form>
+{% endblock %}

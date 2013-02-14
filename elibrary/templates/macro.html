@@ -1,0 +1,36 @@
+{% macro input(field, class="editable") -%}    
+<div class="control-group {% if field.errors %}error{% endif %}">
+    <label class="control-label" for="{{ field.id }}">{{ field.label.text }}</label>
+    <div class="controls">
+        {{ field(class_=class, **kwargs)|safe }}
+        <span class="help-inline">{% if field.errors %}{{ field.errors.0 }}{% endif %}</span>
+    </div>
+</div>        
+{%- endmacro %}
+
+{%- macro textarea(field, class="editable") -%}
+<div class="control-group {% if field.errors %}error{% endif %}">
+    <label class="control-label" for="{{ field.id }}">{{ field.label.text }}</label>
+    <div class="controls">
+        {{ field(class_=class, **kwargs)|safe }}
+        <span class="help-inline">{% if field.errors %}{{ field.errors.0 }}{% endif %}</span>
+    </div>
+</div>   
+{%- endmacro %}
+
+{%- macro multiple_data(field) -%}
+<div class="control-group">
+    <label class="control-label" for="{{ field.id }}">{{ field.label.text }}</label>
+    <div class="controls">
+        {{ field(**kwargs)|safe }}
+    </div>
+</div>   
+{%- endmacro %}
+
+{%- macro submit(submit_title, class="btn-primary") -%}
+<div class="control-group">
+    <div class="controls">
+        <button class="btn {{ class }}" type="submit">{{ submit_title }}</button>  
+    </div>                  
+</div>
+{%- endmacro -%}

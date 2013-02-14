@@ -1,0 +1,12 @@
+{% import "macro.html" as form_helper %}
+{% extends "layout.html" %}
+{% block content %}
+    <form action="" method="POST" class="form-horizontal">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+        {{ form_helper.input(form.name) }}
+        {{ form_helper.textarea(form.info) }}
+        {{ form_helper.multiple_data(form.books) }}
+        {{ form_helper.submit('Update author') }}
+        <a href="{{ url_for('author_delete', obj_id=obj.id) }}">Delete this author?</a>
+    </form>
+{% endblock %}

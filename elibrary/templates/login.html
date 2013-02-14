@@ -1,0 +1,24 @@
+{% import 'macro.html' as form_helper %}
+{% extends "layout.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<form class="form-horizontal" method="POST">
+  <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+  {{ form_helper.input(form.username) }}
+  {{ form_helper.input(form.password) }}
+  <div class="control-group">
+    <div class="controls">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p class="text-error">
+                    {{ message }}
+                </p>
+            {% endfor %}
+        {% endif %}
+    </div>
+  </div>
+  {{ form_helper.submit('Sign in') }}
+{% endwith %}
+</form>
+{% endblock %}

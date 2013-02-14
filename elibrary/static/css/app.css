@@ -1,0 +1,19 @@
+.object-item{
+    border: #D4D4D4 solid 1px;
+    margin-bottom: 5px;
+    width: 580px;
+    min-height: 160px;
+    padding: 10px;
+}
+textarea{
+    width: 450px;
+    height: 150px;
+}
+img{
+    float: left;
+    padding: 5px 5px;
+}
+.search-item{
+    width: 350px;
+    min-height: 150px;
+}

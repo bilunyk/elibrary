@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="span12 offset3">
+    <h3>Looking for a book?</h3>
+    <form id="search-form" method="POST">
+        <span>
+            <input type="text" class="input-large search-query" name="search_text">
+            <button type="submit" class="btn btn-primary">Search</button>
+            <div>
+                <label class="radio">
+                <input type="radio" checked="true" value="name" name="search_by">
+                by name
+                </label>
+                <label class="radio">
+                <input type="radio" value="author" name="search_by">
+                by author
+                </label>
+            </div>
+        </span>
+    </form>
+    <div id="search-results"></div>
+</div>
+{% endblock %}
