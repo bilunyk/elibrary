@@ -12,8 +12,8 @@ class LoginForm(Form):
 class RegistrationForm(Form):
     username = TextField(u'Username', validators=[Required()])
     email = TextField(u'Email', validators=[Required(), Email()])
-    password = TextField(u'Password', validators=[Required(), EqualTo('confirm', message='Passwords must match')])
-    confirm = TextField(u'Confirm password', validators=[Required()])
+    password = PasswordField(u'Password', validators=[Required(), EqualTo('confirm', message='Passwords must match')])
+    confirm = PasswordField(u'Confirm password', validators=[Required()])
 
 
 class SearchForm(Form):
